@@ -31,7 +31,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ products, onAddToCart }) 
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Product not found</h1>
           <button 
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
+            className="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700"
           >
             Back to Products
           </button>
@@ -59,11 +59,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ products, onAddToCart }) 
   ).slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-orange-50">
       <div className="container mx-auto px-4 py-8">
         <button 
           onClick={() => navigate('/')}
-          className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 mb-6"
+          className="flex items-center space-x-2 text-orange-600 hover:text-orange-800 mb-6"
         >
           <ArrowLeft size={20} />
           <span>Back to Products</span>
@@ -85,7 +85,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ products, onAddToCart }) 
             {/* Product Info */}
             <div className="space-y-6">
               <div>
-                <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-3">
+                <span className="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium mb-3">
                   {product.category}
                 </span>
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
@@ -101,7 +101,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ products, onAddToCart }) 
               </div>
 
               <div className="border-t pt-6">
-                <div className="text-4xl font-bold text-blue-600 mb-6">${product.price}</div>
+                <div className="text-4xl font-bold text-orange-600 mb-6">${product.price}</div>
                 
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
@@ -123,7 +123,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ products, onAddToCart }) 
                   <div className="flex space-x-4">
                     <button 
                       onClick={() => onAddToCart(product)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md flex items-center justify-center space-x-2 font-semibold"
+                      className="flex-1 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md flex items-center justify-center space-x-2 font-semibold"
                     >
                       <ShoppingCart size={20} />
                       <span>Add to Cart</span>
@@ -143,7 +143,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ products, onAddToCart }) 
           </div>
 
           {/* Reviews Section */}
-          <div className="border-t bg-gray-50 p-8">
+          <div className="border-t bg-orange-50 p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Customer Reviews</h2>
             <div className="space-y-6">
               {sampleReviews.map(review => (

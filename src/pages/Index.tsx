@@ -105,12 +105,17 @@ const Index = () => {
   const [products] = useState<Product[]>(sampleProducts);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
+    
+    return matchesSearch && matchesCategory;
+  });
 
   const addToCart = (product: Product) => {
     setCartItems(prevItems => {
@@ -152,23 +157,36 @@ const Index = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    setSearchTerm(''); // Clear search when selecting category
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-orange-50">
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         cartItemsCount={getTotalItems()}
         onCartClick={() => setIsCartOpen(true)}
+        onCategoryClick={handleCategoryClick}
       />
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome to Amazon-Style Shop
+          <h1 className="text-3xl font-bold text-orange-900 mb-2">
+            Welcome to Ecommerce Site
           </h1>
-          <p className="text-gray-600">
+          <p className="text-orange-700">
             Discover millions of products at unbeatable prices with fast, free delivery
           </p>
+          {selectedCategory && (
+            <div className="mt-4">
+              <span className="inline-block bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                Category: {selectedCategory}
+              </span>
+            </div>
+          )}
         </div>
         
         <ProductGrid

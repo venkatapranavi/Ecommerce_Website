@@ -7,16 +7,18 @@ interface HeaderProps {
   setSearchTerm: (term: string) => void;
   cartItemsCount: number;
   onCartClick: () => void;
+  onCategoryClick?: (category: string) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
   searchTerm,
   setSearchTerm,
   cartItemsCount,
-  onCartClick
+  onCartClick,
+  onCategoryClick
 }) => {
   return (
-    <header className="bg-blue-900 text-white shadow-lg">
+    <header className="bg-orange-600 text-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -24,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({
             <button className="lg:hidden">
               <Menu size={24} />
             </button>
-            <h1 className="text-2xl font-bold">ShopZone</h1>
+            <h1 className="text-2xl font-bold">Ecommerce Site</h1>
           </div>
 
           {/* Search Bar */}
@@ -35,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 pl-10 pr-4 text-gray-900 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 pl-10 pr-4 text-gray-900 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
               <Search
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
@@ -46,14 +48,14 @@ const Header: React.FC<HeaderProps> = ({
 
           {/* Navigation */}
           <div className="flex items-center space-x-6">
-            <button className="hidden md:flex items-center space-x-1 hover:text-blue-200 transition-colors">
+            <button className="hidden md:flex items-center space-x-1 hover:text-orange-200 transition-colors">
               <User size={20} />
               <span>Account</span>
             </button>
             
             <button
               onClick={onCartClick}
-              className="relative flex items-center space-x-1 hover:text-blue-200 transition-colors"
+              className="relative flex items-center space-x-1 hover:text-orange-200 transition-colors"
             >
               <ShoppingCart size={24} />
               <span className="hidden md:inline">Cart</span>
@@ -67,12 +69,37 @@ const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center space-x-8 py-3 border-t border-blue-800">
-          <a href="#" className="hover:text-blue-200 transition-colors">Electronics</a>
-          <a href="#" className="hover:text-blue-200 transition-colors">Furniture</a>
-          <a href="#" className="hover:text-blue-200 transition-colors">Food & Beverages</a>
-          <a href="#" className="hover:text-blue-200 transition-colors">Pet Supplies</a>
-          <a href="#" className="hover:text-blue-200 transition-colors">Today's Deals</a>
+        <nav className="hidden lg:flex items-center space-x-8 py-3 border-t border-orange-500">
+          <button 
+            onClick={() => onCategoryClick?.('Electronics')}
+            className="hover:text-orange-200 transition-colors"
+          >
+            Electronics
+          </button>
+          <button 
+            onClick={() => onCategoryClick?.('Furniture')}
+            className="hover:text-orange-200 transition-colors"
+          >
+            Furniture
+          </button>
+          <button 
+            onClick={() => onCategoryClick?.('Food & Beverages')}
+            className="hover:text-orange-200 transition-colors"
+          >
+            Food & Beverages
+          </button>
+          <button 
+            onClick={() => onCategoryClick?.('Pet Supplies')}
+            className="hover:text-orange-200 transition-colors"
+          >
+            Pet Supplies
+          </button>
+          <button 
+            onClick={() => onCategoryClick?.('')}
+            className="hover:text-orange-200 transition-colors"
+          >
+            All Products
+          </button>
         </nav>
       </div>
     </header>

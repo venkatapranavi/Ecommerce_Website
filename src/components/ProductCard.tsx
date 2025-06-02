@@ -52,7 +52,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute top-2 right-2">
-          <span className="bg-blue-600 text-white px-2 py-1 rounded-md text-sm font-semibold">
+          <span className="bg-orange-600 text-white px-2 py-1 rounded-md text-sm font-semibold">
             {product.category}
           </span>
         </div>
@@ -60,7 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
       
       <div className="p-4">
         <h3 
-          className="font-semibold text-gray-900 mb-2 line-clamp-2 cursor-pointer hover:text-blue-600"
+          className="font-semibold text-gray-900 mb-2 line-clamp-2 cursor-pointer hover:text-orange-600"
           onClick={handleProductClick}
         >
           {product.name}
@@ -78,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-blue-600">
+          <span className="text-2xl font-bold text-orange-600">
             ${product.price}
           </span>
           
@@ -87,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
               e.stopPropagation();
               onAddToCart(product);
             }}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center space-x-2 transition-colors duration-200"
+            className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md flex items-center space-x-2 transition-colors duration-200"
           >
             <ShoppingCart size={18} />
             <span>Add to Cart</span>
